@@ -848,6 +848,7 @@ GameObject:
   - component: {fileID: 2518042442894556569}
   - component: {fileID: 2495947100179425679}
   - component: {fileID: 8147684302673634042}
+  - component: {fileID: 4872671156747608792}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
@@ -920,6 +921,22 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4872671156747608792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3946803741083233916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18c1c343990ed76418d0ec98793697d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
+  direction: {x: 0, y: 0, z: 0}
+  virtualCamera: {fileID: 6286875096377531341}
+  characterController: {fileID: 0}
 --- !u!1 &4152766799850459055
 GameObject:
   m_ObjectHideFlags: 0
@@ -968,8 +985,8 @@ GameObject:
   - component: {fileID: 6286875096377531341}
   - component: {fileID: 5795815094280809880}
   m_Layer: 0
-  m_Name: Main Camera
-  m_TagString: MainCamera
+  m_Name: Virtual Camera
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

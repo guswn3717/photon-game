@@ -27,6 +27,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     public override void OnJoinedRoom()
     {
         PhotonNetwork.LoadLevel("Game");
+
     }
 
     public override void OnRoomListUpdate(List<RoomInfo> roomList)
@@ -46,6 +47,21 @@ public class LobbyManager : MonoBehaviourPunCallbacks
             }
             else // 룸의 정보가 변경되는 경우
             {
+                // 룸이 처음 생성되는 경우
+                if(dictionary.ContainsKey(room.Name) == false)
+                {
+                    GameObject clone = Instantiate(Resources.Load<GameObject>("Room"), parentTransform);
+
+                    clone.GetComponent<Information>().Details(room.Name, room.PlayerCount, room.MaxPlayers);
+
+                    dictionary.Add(room.Name, clone);
+                }
+                else // 룸이 갱신되었을 대
+                {
+                    dictionary.TryGetValue(room.Name, out prefab);
+
+                    prefab.GetComponent<Information>().Details(room.Name, room.PlayerCount, room.MaxPlayers);
+                }
 
             }
         }

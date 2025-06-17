@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 9122776644136003610}
   - component: {fileID: 1094245002442549708}
   - component: {fileID: 1264782545932314389}
+  - component: {fileID: 9070689309882450077}
   m_Layer: 5
   m_Name: Room
   m_TagString: Untagged
@@ -120,7 +121,33 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1094245002442549708}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 9070689309882450077}
+        m_TargetAssemblyTypeName: Information, Assembly-CSharp
+        m_MethodName: OnConnectRoom
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &9070689309882450077
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3422800648251378880}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8902424845dca9a498b8e8f4b665d623, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roomName: 
+  titleText: {fileID: 5718687953666857317}
 --- !u!1 &3739213483609759395
 GameObject:
   m_ObjectHideFlags: 0
