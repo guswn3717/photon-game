@@ -1,5 +1,6 @@
 using Photon.Pun;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Character : MonoBehaviourPun
 {
@@ -26,6 +27,12 @@ public class Character : MonoBehaviourPun
     {
         if (photonView.IsMine)
         {
+            // UI에 포커스가 있다면 입력을 무시합니다.
+            if(EventSystem.current.currentSelectedGameObject != null)
+            {
+                return;
+            }
+
             Control();
 
             Move();
