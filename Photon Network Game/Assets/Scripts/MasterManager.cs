@@ -6,6 +6,7 @@ using UnityEngine.UIElements;
 
 public class MasterManager : MonoBehaviourPunCallbacks
 {
+    [SerializeField] GameObject clone;
     [SerializeField] Vector3 direction;
     [SerializeField] WaitForSeconds waitForSeconds = new WaitForSeconds(5.0f);
 
@@ -23,7 +24,10 @@ public class MasterManager : MonoBehaviourPunCallbacks
         {
             if (PhotonNetwork.CurrentRoom != null)
             {
-                PhotonNetwork.InstantiateRoomObject("Unit", direction, Quaternion.identity);
+                if (clone == null)
+                {
+                    clone = PhotonNetwork.InstantiateRoomObject("Unit", direction, Quaternion.identity);
+                }
             }
 
             yield return waitForSeconds;

@@ -2,13 +2,13 @@ using PlayFab;
 using Photon.Pun;
 using UnityEngine;
 using UnityEngine.UI;
-using Photon.Realtime;
 using PlayFab.ClientModels;
 
 public class PlayfabManager : MonoBehaviourPunCallbacks
 {
     [SerializeField] string version;
 
+    [SerializeField] GameObject failurePanel;
     [SerializeField] InputField emailInputField;
     [SerializeField] InputField passwordInputField;
 
@@ -50,7 +50,9 @@ public class PlayfabManager : MonoBehaviourPunCallbacks
 
     void Failure(PlayFabError playFabError)
     {
-        Debug.Log(playFabError.GenerateErrorReport());
+        failurePanel.GetComponent<Failure>().Message(playFabError.GenerateErrorReport());
+
+        failurePanel.SetActive(true);
     }
 
 }
