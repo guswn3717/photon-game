@@ -19,10 +19,23 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     void Start()
     {
-        SetMouse(false);
+        if (photonView.IsMine)
+        {
+            SetMouse(false);
+        }
 
-        initializeTime = PhotonNetwork.Time;
+        if (PhotonNetwork.IsMasterClient)
+        {
+            initializeTime = PhotonNetwork.Time;
 
+            photonView.RPC("InitializeTime", RpcTarget.AllBuffered, initializeTime);
+        }
+    }
+
+    [PunRPC]
+    void InitializeTime(double time)
+    {
+        initializeTime = time;
     }
 
     public void SetMouse(bool state)
@@ -32,6 +45,14 @@ public class GameManager : MonoBehaviourPunCallbacks
             Cursor.visible = state;
 
             Cursor.lockState = (CursorLockMode)Convert.ToInt32(!state);
+        }
+    }
+
+    public override void OnPlayerEnteredRoom(Player newPlayer)
+    {
+        if(PhotonNetwork.CurrentRoom.PlayerCount >=PhotonNetwork.CurrentRoom.MaxPlayers)
+        {
+            PhotonNetwork.CurrentRoom.IsOpen = false;
         }
     }
 
@@ -78,7 +99,10 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     private void OnDestroy()
     {
-        SetMouse(true);
+        if (photonView.IsMine)
+        {
+            SetMouse(true);
+        }
     }
 
 }
